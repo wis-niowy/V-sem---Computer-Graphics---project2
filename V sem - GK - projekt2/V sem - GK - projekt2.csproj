@@ -67,7 +67,6 @@
     <Compile Include="Quickhull.cs" />
     <Compile Include="ScanLineFill.cs" />
     <Compile Include="Segment.cs" />
-    <Compile Include="TESTCLASS.cs" />
     <Compile Include="WeilerAtherton.cs" />
     <Page Include="ColorPicker.xaml">
       <SubType>Designer</SubType>
