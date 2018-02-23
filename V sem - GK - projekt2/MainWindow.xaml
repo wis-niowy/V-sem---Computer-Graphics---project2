@@ -1,0 +1,174 @@
+﻿<Window x:Class="V_sem___GK___projekt2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:V_sem___GK___projekt2"
+        mc:Ignorable="d"
+        x:Name="Self"
+        DataContext="{Binding ElementName=Self}"
+        Title="MainWindow" Height="600" Width="800"
+        MinHeight="600" MinWidth="800"
+        MaxHeight="600" MaxWidth="800">
+    <Window.Resources>
+        <local:StringToDoubleConverter x:Key="StringToDoubleConverter"/>
+    </Window.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" /><!--menu-->
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" /><!--separator-->
+            <RowDefinition Height="5*" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="1">
+            <!--Toolbar grid-->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="Auto"/>
+                <!--sep-->
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="Auto"/>
+                <!--sep-->
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="Auto"/>
+                <!--sep-->
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <DockPanel Grid.Column="0" LastChildFill="False">
+                <Grid DockPanel.Dock="Top">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Margin="5">
+                        <Button Content="Set Texture" Click="SetPolygonTextureButton_Click"/>
+                        <Button Content="Set Bumpmap" Click="SetPolygonBumpmapButton_Click"/>
+                        <Button Content="Set Color" Click="SetPolygonColorButton_Click"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Margin="5">
+                        <Button Content="Clear Texture" Click="ClearPolygonTextureButton_Click"/>
+                        <Button Content="CLear Bumpmap" Click="ClearPolygonBumpmapButton_Click"/>
+                    </StackPanel>
+                </Grid>
+                
+                <TextBlock Text="Marked Figure Edition" HorizontalAlignment="Center" DockPanel.Dock="Bottom"/>
+            </DockPanel>
+            <Separator Grid.Column="1" Margin="5">
+                <Separator.LayoutTransform>
+                    <RotateTransform Angle="90" />
+                </Separator.LayoutTransform>
+            </Separator>
+            <DockPanel Grid.Column="2" LastChildFill="False">
+                <!--Add-->
+                <StackPanel Margin="5" DockPanel.Dock="Top">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel>
+                            <Button Content="Set Texture" Click="SetRandomPolygonTextureButton_Click"/>
+                            <Button Content="Set Bumpmap" Click="SetRandomPolygonBumpmapButton_Click"/>
+                            <Button Content="Set Color" Click="SetRandomPolygonColorButton_Click"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1">
+                            <Button Content="Clear Texture" Click="ClearRandomPolygonTextureButton_Click"/>
+                            <Button Content="Clear Bumpmap" Click="ClearRandomPolygonBumpmapButton_Click"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="2">
+                            <DockPanel>
+                                <Label Content="MinSpeed" FontSize="8"></Label>
+                                <TextBox PreviewTextInput="txtName_PreviewTextInput"
+                                         Name="MinSpeedTextbox" Text="{Binding Path=MinRandomPolygonSpeed,
+                                                                        Converter={StaticResource StringToDoubleConverter},
+                                                                        Mode=TwoWay}"/>
+                            </DockPanel>
+                            <DockPanel>
+                                <Label Content="MaxSpeed" FontSize="8"></Label>
+                                <TextBox PreviewTextInput="txtName_PreviewTextInput"
+                                         Name="MaxSpeedTextbox" Text="{Binding Path=MaxRandomPolygonSpeed,
+                                                                        Converter={StaticResource StringToDoubleConverter},
+                                                                        Mode=TwoWay}"/>
+                            </DockPanel>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+                <TextBlock Text="Random Figure Edition" HorizontalAlignment="Center" DockPanel.Dock="Bottom"/>
+            </DockPanel>
+            <Separator Grid.Column="3" Margin="5">
+                <Separator.LayoutTransform>
+                    <RotateTransform Angle="90" />
+                </Separator.LayoutTransform>
+            </Separator>
+            <DockPanel Grid.Column="4" LastChildFill="False">
+                <StackPanel Margin="5" DockPanel.Dock="Top">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="2*" />
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel>
+                            <Button Content="Set Color" Click="SetLightColorButton_Click"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="1">
+                            <TextBlock Text="Position" HorizontalAlignment="Center" FontSize="10"/>
+                            <DockPanel Height="16">
+                                <Label Height="20" Content="x:" FontSize="8"></Label>
+                                <TextBox PreviewTextInput="txtName_PreviewTextInput"
+                                         Name="x" Text="{Binding Path=XLightCoord,
+                                                         Converter={StaticResource StringToDoubleConverter},
+                                                         Mode=TwoWay}"/>
+                            </DockPanel>
+                            <DockPanel Height="16">
+                                <Label Height="20" Content="y:" FontSize="8"></Label>
+                                <TextBox PreviewTextInput="txtName_PreviewTextInput"
+                                         Name="y" Text="{Binding Path=YLightCoord,
+                                                         Converter={StaticResource StringToDoubleConverter},
+                                                         Mode=TwoWay}"/>
+                            </DockPanel>
+                            <DockPanel Height="16">
+                                <Label Height="20" Content="z:" FontSize="8"></Label>
+                                <TextBox PreviewTextInput="txtName_PreviewTextInput"
+                                         Name="z" Text="{Binding Path=LightHeight,
+                                                         Converter={StaticResource StringToDoubleConverter},
+                                                         Mode=TwoWay}"/>
+                            </DockPanel>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+                
+                <TextBlock Text="Light Settings" HorizontalAlignment="Center" DockPanel.Dock="Bottom"/>
+            </DockPanel>
+            <Separator Grid.Column="5" Margin="5">
+                <Separator.LayoutTransform>
+                    <RotateTransform Angle="90" />
+                </Separator.LayoutTransform>
+            </Separator>
+            <StackPanel Grid.Column="6" Margin="5">
+                <TextBlock TextWrapping="WrapWithOverflow"
+                           Text="m - create new random polygon" />
+                <TextBlock TextWrapping="WrapWithOverflow"
+                           Text="d - delete marked polygon" />
+            </StackPanel>
+        </Grid>
+        <Separator Grid.Row="2" Margin="5"/>
+        <DockPanel Grid.Row="3">
+            <Canvas Name="CanvasWithImage" Margin="15" Width="Auto" Height="Auto"
+                    PreviewMouseLeftButtonDown="CanvasWithImage_PreviewMouseLeftButtonDown"
+                    PreviewMouseLeftButtonUp="CanvasWithImage_PreviewMouseLeftButtonUp"
+                    PreviewMouseRightButtonDown="CanvasWithImage_PreviewMouseRightButtonDown"
+                    PreviewMouseRightButtonUp="CanvasWithImage_PreviewMouseRightButtonUp"
+                    PreviewMouseMove="CanvasWithImage_PreviewMouseMove"
+                    Background="Transparent"
+                    Loaded="CanvasWithImage_Loaded">
+                <Image Name="BottomImage">
+                </Image>
+            </Canvas>
+        </DockPanel>
+    </Grid>
+</Window>
